@@ -1,0 +1,28 @@
+<!--
+    <h1>Home Page</h1>
+-->
+    <div class="container-feedflickr home">
+		<h1>Flickr public feed</h1>
+		<form class="form-inline">
+			<div class="form-group">
+				<label for="search">Search feeds by title</label>
+				<input type="text" class="form-control" name="search" ng-model="search">
+			</div>
+		</form>
+ 
+        <ul id="list-feedflickr" when-scroll-ends="loadMore()">
+		  <li ng-repeat="post in posts | filter:search | limitTo:limit" class="layout-absolute-wrapper">
+
+			  <a href="#detail/{{post.published}}/{{post.title}}" style="background-image:url({{post.media.m}})" class="flickr-img layout-absolute-aside">
+			  </a>
+
+			  <div class="flickr-text layout-absolute-main">
+				<a href="#detail/{{post.published}}/{{post.title}}" class="truncate flickr-title">{{post.title}}</a>
+				<p>Published on {{ post.published | date : "d MMM yyyy' at 'H':'mm"}}</p>
+				<a href="https://www.flickr.com/photos/{{post.author_id}}/">{{post.author}}</a>
+				<a href={{post.link}} >View on Flickr</a>
+			  </div>
+		  </li>
+		</ul>   
+		 
+    </div>

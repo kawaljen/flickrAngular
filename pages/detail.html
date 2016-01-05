@@ -1,0 +1,27 @@
+     <div class="container-feedflickr detail">
+        <h1>Flickr public feed</h1>
+        <a href="/" class="btn btn-warning">Back</a> 
+
+        <ul id="list-feedflickr">
+		  <li ng-repeat="post in posts | filter: titlepost | filter: datepost">
+				<a href="#detail/{{post.published}}/{{post.title}}" class="truncate flickr-title">{{post.title}}</a>
+				<p>Published on {{ post.published | date : "d MMM yyyy' at 'H':'mm"}}</p>
+				<a href="https://www.flickr.com/photos/{{post.author_id}}/">{{post.author}}</a>
+				<a href={{post.link}} >View on Flickr</a>
+				
+				<div class="layout-absolute-wrapper">
+					<a href="#detail/{{post.published}}/{{post.title}}" style="background-image:url({{post.media.m}})" class="layout-absolute-aside flickr-img">
+					</a>
+
+					<div class="layout-absolute-main">
+						<div ng-bind-html="post.description | to_trusted">
+					</div>
+					<div>
+						<p>Tags: {{post.tags}}</p>
+					
+					</div>
+				</div>
+			  </div>
+		  </li>
+		</ul>  
+    </div>
